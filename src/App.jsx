@@ -1,20 +1,20 @@
-import { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
-import { Dialog } from "primereact/dialog"
-import { Button } from "primereact/button"
+import "./App.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Base from "./template/Base";
+import Subject from "./pages/Subject";
 
 function App() {
-
-  const [state, setState] = useState(false)
   return (
-    <>
-      <Dialog visible={state} onHide={() => setState(false)}>
-      </Dialog>
-
-      <Button label="Show" onClick={() => setState(true)} />
-    </>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Base />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/subjects" element={<Subject />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
